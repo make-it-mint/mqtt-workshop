@@ -1,8 +1,8 @@
-#Workshop - Einführung IoT mit MQTT
+# Workshop - Einführung IoT mit MQTT
 
 Dieses Repository beinhaltet den Programmcode für den Workshop "Einführung IoT mit MQTT von MAKE IT MINT.
 
-##Benötigte Hardware:
+## Benötigte Hardware:
 - Broker: Raspberry Pi 3B+/4B/400 mit Raspbian Bullseye
 - Clients: Raspberry Pi Pico W oder andere WLAN-fähige Mikrocontroller, auf denen MicroPython installiert werden kann.([Übersicht](https://micropython.org/download/))
 - Steckplatinen, Sensoren, Aktuatoren und weitere Bauteile für ausgewählte Clientfunktionen
@@ -11,7 +11,7 @@ Für den Broker wird hier eine Raspberry Pi 4B, mit Raspbian Bullseye installier
 
 Für das Flashen der Mikrocontroller werden Raspberry Pi 400 verwendet. Andere Linuxbetriebssysteme funktionieren aber auch.
 
-##Installation des Brokers (RPi 4B)
+## Installation des Brokers (RPi 4B)
 
 Öffne ein Terminal und aktualisiere die verfügbaren Pakete
 `sudo apt update`
