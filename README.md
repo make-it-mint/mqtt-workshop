@@ -1,17 +1,18 @@
-# Workshop - Einführung IoT mit MQTT
+# Workshop - Einführung IoT mit MQTT in Python und MicroPython
 
-Dieses Repository beinhaltet den Programmcode für den Workshop "Einführung IoT mit MQTT von MAKE IT MINT.
+Dieses Repository beinhaltet den Programmcode für den Workshop "Einführung IoT mit MQTT" von MAKE IT MINT.
 
 ## Benötigte Hardware:
 - Broker: Raspberry Pi 3B+/4B/400 mit Raspbian Bullseye
 - Clients: Raspberry Pi Pico W oder andere WLAN-fähige Mikrocontroller, auf denen MicroPython installiert werden kann.([Übersicht](https://micropython.org/download/))
 - Steckplatinen, Sensoren, Aktuatoren und weitere Bauteile für ausgewählte Clientfunktionen
 
-Für den Broker wird hier eine Raspberry Pi 4B, mit Raspbian Bullseye installiert, verwendet.
+Für den Broker wird hier eine Raspberry Pi 4B, mit Raspbian Bullseye installiert, verwendet. Er kann auch auf einem anderen Gerät installiert werden, dafür muss aber Eigenrecherche betrieben werden ;). Willst du keinen eigenen Broker einichten, kann auch ein öffentlicher Broker verwendet werden, wie ihn beispielsweise HiveMQ [hier](https://www.hivemq.com/public-mqtt-broker/) zur Verfügung stellt. Über Datenschutzrichtlinien im Vorfeld bitte selbst informieren.
 
 Für das Flashen der Mikrocontroller werden Raspberry Pi 400 verwendet. Andere Linuxbetriebssysteme funktionieren aber auch.
 
 ## Installation des Brokers (RPi 4B)
+Die Installationsanleitung basiert auf einem Tutorial der Website [pimylifeup.com](https://pimylifeup.com/raspberry-pi-mosquitto-mqtt-server/)
 
 Öffne ein Terminal und aktualisiere die verfügbaren Pakete
 `sudo apt update`
@@ -61,10 +62,12 @@ Jetzt warte en paar Sekunden und \*PLOPP\* das Laufwerk sollte verschwunden sein
 Benutzt du einen anderen Mikrocontroller, befolge bitte die Anleitung zu deiner Hardware auf [dieser](https://micropython.org/download/) Seite.
 
 ### Notwendige Python Packages installieren und den Mikrocontroller einrichten
+Sollte auf deinem Gerät noch kein Python installiert sein, kannst du [hier](https://www.python.org/downloads/) eine für dein Betriebssystem passende Python Version herunterladen und installieren.
+
 Für diesen Workshop wird die `ampy` Bibliothek von adafruit oder die IDE Thonny (wenn man direkt ein Raspberry Pi für die Programmierung des Pico benutzt) verwendet. Mit beiden Tools kann Code auf dem Mikrocontroller ausgeführt werden.
 Die Anleitung für Thonny gibt es in den Workshopunterlagen.
 
-Für `ampy` müssen zuerst die entsprechenden Pthon Pakcages installiert werden. Gib in der Konsole die folgenden Befehle ein.
+Für `ampy` müssen zuerst die entsprechenden Python Pakcages installiert werden. Gib in der Konsole die folgenden Befehle ein.
 `pip install adafruit-ampy`
 `pip install esptool`
 
