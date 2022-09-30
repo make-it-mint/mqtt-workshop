@@ -15,7 +15,7 @@ if not PORTNAME in meine_comports:
 else:
     
     #Netzwerkeinstellungen auf den Mikrocontroller hochladen
-    os.system(f'ampy --port {PORTNAME} put {os.path.dirname(os.path.abspath(__file__))}/custom_netzwerk_und_client_einstellungen.py netzwerk_und_client_einstellungen.py')
+    os.system(f'ampy --port {PORTNAME} put {os.path.dirname(os.path.abspath(__file__))}/netzwerk_und_client_einstellungen.py netzwerk_und_client_einstellungen.py')
     #packages installieren
     os.system(f'ampy --port {PORTNAME} run {os.path.dirname(os.path.abspath(__file__))}/install_libraries.py')
 
