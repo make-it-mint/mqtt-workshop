@@ -13,7 +13,7 @@ TOPIC_SUBSCRIPTION_INTERVALL= 'WOHNZIMMER/TEMPERATUR/MESSINTERVALL'
 #SKRIPTVARIABLEN
 MESSINTERVALLIN_SEKUNDEN = 5.0
 GRENZWERT_TEMPERATUR=27.0
-LED_ON=False
+LED_AN=False
 
 #GPIO PINS 
 led = machine.Pin("LED", machine.Pin.OUT)
@@ -41,14 +41,14 @@ def mqtt_connect():
 
 
 def my_callback(topic, nachricht):
-    global GRENZWERT_TEMPERATUR, MESSINTERVALLIN_SEKUNDEN, LED_ON, led
+    global GRENZWERT_TEMPERATUR, MESSINTERVALLIN_SEKUNDEN, LED_AN, led
     print((topic, nachricht))
     try:
         #LED per Topic an und aus schalten
         if topic.decode("utf-8") == TOPIC_SUBSCRIPTION_LED:     
             nachricht = nachricht.decode("utf-8")
-            LED_ON = True if nachricht == "True" or nachricht == "1" else False
-            led.on() if LED_ON else led.off()
+            LED_AN = True if nachricht == "True" or nachricht == "1" else False
+            led.on() if LED_AN else led.off()
 
         #TEMPERATUR_GRENZWERT VERÄNDERN
         elif topic.decode("utf-8") == TOPIC_SUBSCRIPTION_GRENZE:
