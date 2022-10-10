@@ -5,7 +5,7 @@ from umqtt.simple import MQTTClient
 from netzwerk_und_client_einstellungen import *
 
 #TOPICS
-TOPIC_PUBLISHING = 'HEAD_TOPIC/TO_MC'
+TOPIC_PUBLISHING = 'MEINE_TOPIC/TESTS/DAUER_PUBLISH'
 
 #SKRIPTVARIABLEN
 MEIN_TEXT = "MEIN TEXT HIER"

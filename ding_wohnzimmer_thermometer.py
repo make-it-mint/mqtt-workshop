@@ -1,22 +1,26 @@
-import machine,sys
+import machine,sys, math
 import network
 import utime
 from umqtt.simple import MQTTClient
 from netzwerk_und_client_einstellungen import *
 
 #TOPICS
-TOPIC_PUBLISHING = 'WOHNZIMMER/TEMPERATUR/MESSUNG'
-TOPIC_SUBSCRIPTION_LED = 'WOHNZIMMER/TEMPERATUR/LED_STATUS'
-TOPIC_SUBSCRIPTION_GRENZE= 'WOHNZIMMER/TEMPERATUR/GRENZWERT'
+TOPIC_PUBLISHING_MESSUNG = 'WOHNZIMMER/TEMPERATUR/MESSUNG'
+TOPIC_PUBLISHING_HEIZUNG_STATUS = 'WOHNZIMMER/HEIZUNG/STATUS'
+TOPIC_SUBSCRIPTION_GRENZWERT_ABFRAGE= 'WOHNZIMMER/TEMPERATUR/GRENZWERT_ABFRAGE'
+
+TOPIC_SUBSCRIPTION_GRENZWERT_NEU= 'WOHNZIMMER/TEMPERATUR/GRENZWERT_NEU'
 TOPIC_SUBSCRIPTION_INTERVALL= 'WOHNZIMMER/TEMPERATUR/MESSINTERVALL'
 
+
+
 #SKRIPTVARIABLEN
-MESSINTERVALLIN_SEKUNDEN = 5.0
-GRENZWERT_TEMPERATUR=27.0
-LED_AN=False
+MESSINTERVALLIN_SEKUNDEN = 3.0
+GRENZWERT_TEMPERATUR=22.0
+HEIZUNG_AN=False
 
 #GPIO PINS 
-led = machine.Pin("LED", machine.Pin.OUT)
+THERMOMETER_PIN = machine.ADC(28)
 
 
 wlan = network.WLAN(network.STA_IF)
@@ -28,8 +32,13 @@ while not wlan.isconnected() and wlan.status() >= 0:
 	utime.sleep(1)
 
 def temperatur_messen():
-    #TODO Temperatur Messen Code
-    return 20
+    temperatur_wert = THERMOMETER_PIN.read_u16()
+    Vr = 3.3 * float(temperatur_wert) / 65535
+    Rt = 10000 * Vr / (3.3 - Vr)
+    temperatur = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
+    temperatur_celsius = temperatur - 273.15
+    temperatur_fahrenheit = temperatur_celsius * 1.8 + 32
+    return round(temperatur_celsius,1)
 
 
 def mqtt_connect():
@@ -41,17 +50,11 @@ def mqtt_connect():
 
 
 def my_callback(topic, nachricht):
-    global GRENZWERT_TEMPERATUR, MESSINTERVALLIN_SEKUNDEN, LED_AN, led
+    global GRENZWERT_TEMPERATUR, MESSINTERVALLIN_SEKUNDEN
     print((topic, nachricht))
     try:
-        #LED per Topic an und aus schalten
-        if topic.decode("utf-8") == TOPIC_SUBSCRIPTION_LED:     
-            nachricht = nachricht.decode("utf-8")
-            LED_AN = True if nachricht == "True" or nachricht == "1" else False
-            led.on() if LED_AN else led.off()
-
         #TEMPERATUR_GRENZWERT VERÄNDERN
-        elif topic.decode("utf-8") == TOPIC_SUBSCRIPTION_GRENZE:
+        if topic.decode("utf-8") == TOPIC_SUBSCRIPTION_GRENZWERT_NEU:
             GRENZWERT_TEMPERATUR = float(nachricht.decode("utf-8"))
             print(f"Neuer Grenzwert für Temperatur in Grad Celsius: {GRENZWERT_TEMPERATUR}")
 
@@ -69,8 +72,7 @@ except OSError as e:
     sys.exit()
 
 #Subscription Topics auswählen
-client.subscribe(TOPIC_SUBSCRIPTION_LED)
-client.subscribe(TOPIC_SUBSCRIPTION_GRENZE)
+client.subscribe(TOPIC_SUBSCRIPTION_GRENZWERT_NEU)
 client.subscribe(TOPIC_SUBSCRIPTION_INTERVALL)
 
 #Messintervall starten
@@ -84,10 +86,15 @@ while True:
         #Temperatur messen
         AKTUELLE_TEMPERATUR = temperatur_messen()
         print(f"{AKTUELLE_TEMPERATUR} Grad Celsius gemessen, Grenzwert: {GRENZWERT_TEMPERATUR} Grad Celsius.")
+        client.publish(TOPIC_PUBLISHING_MESSUNG, msg=f'{AKTUELLE_TEMPERATUR}')
 
-        #Wenn der Grenzwert überschritten ist, aktuelle Temperatur Pulishen
-        if AKTUELLE_TEMPERATUR >= GRENZWERT_TEMPERATUR:
-            client.publish(TOPIC_PUBLISHING, msg=f'{AKTUELLE_TEMPERATUR}')
+        #Wenn der Grenzwert überschritten wird, kann etwas ausgeführt werden
+        if AKTUELLE_TEMPERATUR <= GRENZWERT_TEMPERATUR:
+            HEIZUNG_AN=True
+        else:
+            HEIZUNG_AN=False
+
+        client.publish(TOPIC_PUBLISHING_HEIZUNG_STATUS, msg=f"{HEIZUNG_AN}")
 
         #Intervall zurücksetzen
         zuletzt_published_zeit=utime.ticks_ms()

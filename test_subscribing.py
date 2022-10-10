@@ -5,7 +5,7 @@ from umqtt.simple import MQTTClient
 from netzwerk_und_client_einstellungen import *
 
 #TOPICS
-TOPIC_SUBSCRIPTION = 'HEAD_TOPIC/TO_MC'
+TOPIC_SUBSCRIPTION = 'MEINE_TOPIC/TESTS/SUBSCRIBE'
 
 
 wlan = network.WLAN(network.STA_IF)
