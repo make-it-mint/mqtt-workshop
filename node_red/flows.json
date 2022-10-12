@@ -1,0 +1,1599 @@
+[
+    {
+        "id": "1acc33cf2157e254",
+        "type": "tab",
+        "label": "Dashboard MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f2f804167d775925",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/HELLIGKEIT/HELLIGKEIT_AKTUELL",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 180,
+        "wires": [
+            [
+                "055d8d2744778efe",
+                "02e5360772b65239"
+            ]
+        ]
+    },
+    {
+        "id": "055d8d2744778efe",
+        "type": "ui_chart",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_sensordaten_helligkeit",
+        "group": "bc1c744dc90bbc75",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "label": "Sensordaten Helligkeit",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "20",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 710,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "02e5360772b65239",
+        "type": "ui_gauge",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_helligkeit_skala",
+        "group": "bc1c744dc90bbc75",
+        "order": 1,
+        "width": 10,
+        "height": 7,
+        "gtype": "gage",
+        "title": "Aktuelle Helligkeit",
+        "label": "",
+        "format": "",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#000000",
+            "#07046a",
+            "#e6e600"
+        ],
+        "seg1": "0.2",
+        "seg2": "0.45",
+        "className": "",
+        "x": 680,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "96acf2ba0bb0c3ce",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/HELLIGKEIT/LED_STATUS",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 300,
+        "wires": [
+            [
+                "544dcd18fbd033c8"
+            ]
+        ]
+    },
+    {
+        "id": "1523a981479f3b3c",
+        "type": "ui_button",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_helligkeit_led_status",
+        "group": "bc1c744dc90bbc75",
+        "order": 13,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "{{topic}}",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "{{background}}",
+        "className": "",
+        "icon": "fa-lightbulb-o",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 700,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "544dcd18fbd033c8",
+        "type": "function",
+        "z": "1acc33cf2157e254",
+        "name": "function 1",
+        "func": "if(msg.payload == \"True\"){\n    msg.topic = \"AN\";\n    msg.background = \"green\";\n}else{\n    msg.topic = \"AUS\";\n    msg.background = \"red\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "1523a981479f3b3c"
+            ]
+        ]
+    },
+    {
+        "id": "a902d83ca9a25be7",
+        "type": "ui_template",
+        "z": "1acc33cf2157e254",
+        "group": "bc1c744dc90bbc75",
+        "name": "template_wohnzimmer_led_abfrage",
+        "order": 30,
+        "width": 1,
+        "height": 1,
+        "format": "<style>\n[node-id=\"1523a981479f3b3c\"] > button{\n    font-size: 1.7em !important;\n    border-radius:20px !important;\n    };\n</style>\n\n<style>\n    [node-id=\"333b5be98cf32ab2\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 200,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92e0b621d84bfb88",
+        "type": "mqtt out",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/HELLIGKEIT/GRENZWERT_NEU",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3366b3402bf277f",
+        "x": 1210,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2e88b1c437e2b619",
+        "type": "function",
+        "z": "1acc33cf2157e254",
+        "name": "function 2",
+        "func": "msg.payload = parseFloat(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "66fbda5bb3e71b2d"
+            ]
+        ]
+    },
+    {
+        "id": "1f026e0477e1e2c5",
+        "type": "ui_template",
+        "z": "1acc33cf2157e254",
+        "group": "6922440a28cc5089",
+        "name": "template_kueche_manuelle_abfrage",
+        "order": 29,
+        "width": 1,
+        "height": 1,
+        "format": "<style>\n    [node-id=\"f88da9db8a11a9da\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>\n\n<style>\n    [node-id=\"10c994c2deaa645f\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>\n\n<style>\n    [node-id=\"8d3b11d5530f502a\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 230,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "155f9740e47bb0bb",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/TEMPERATUR/MESSUNG",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 480,
+        "wires": [
+            [
+                "3067f5e47fa37dd2",
+                "bf271cb02525e9ce"
+            ]
+        ]
+    },
+    {
+        "id": "3067f5e47fa37dd2",
+        "type": "ui_gauge",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_temperatur_skala",
+        "group": "bc1c744dc90bbc75",
+        "order": 15,
+        "width": 10,
+        "height": 7,
+        "gtype": "gage",
+        "title": "Aktuelle Temperatur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "5",
+        "max": "50",
+        "colors": [
+            "#3584e4",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "16",
+        "seg2": "29",
+        "className": "",
+        "x": 670,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "bf271cb02525e9ce",
+        "type": "ui_chart",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_sensordaten_temperatur",
+        "group": "bc1c744dc90bbc75",
+        "order": 16,
+        "width": 6,
+        "height": 6,
+        "label": "Sensordaten Temperatur",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "20",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 690,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66fbda5bb3e71b2d",
+        "type": "ui_slider",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_helligkeit_grenzwert_neu",
+        "label": "Grenzwert Helligkeit",
+        "tooltip": "",
+        "group": "bc1c744dc90bbc75",
+        "order": 11,
+        "width": 8,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 850,
+        "y": 120,
+        "wires": [
+            [
+                "92e0b621d84bfb88"
+            ]
+        ]
+    },
+    {
+        "id": "e0886597df91f0cd",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/TEMPERATUR/TEMPERATUR_AKTUELL",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 940,
+        "wires": [
+            [
+                "264f0b7943facebb",
+                "bb9c9422fe5ec921"
+            ]
+        ]
+    },
+    {
+        "id": "1edfd8378556e9a0",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/LUFTFEUCHTIGKEIT/LUFTFEUCHTIGKEIT_AKTUELL",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 320,
+        "y": 1000,
+        "wires": [
+            [
+                "7b2ce61c24194d30",
+                "b16fc0fbb3516a13"
+            ]
+        ]
+    },
+    {
+        "id": "7b2ce61c24194d30",
+        "type": "ui_gauge",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_luftfeuchte_skala",
+        "group": "6922440a28cc5089",
+        "order": 1,
+        "width": 10,
+        "height": 7,
+        "gtype": "wave",
+        "title": "Aktuelle Luftfeuchtigkeit",
+        "label": "%",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#3584e4",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "16",
+        "seg2": "29",
+        "className": "",
+        "x": 730,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "264f0b7943facebb",
+        "type": "ui_gauge",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_temperatur_skala",
+        "group": "6922440a28cc5089",
+        "order": 15,
+        "width": 10,
+        "height": 7,
+        "gtype": "gage",
+        "title": "Aktuelle Temperatur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "className": "",
+        "x": 730,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "f88da9db8a11a9da",
+        "type": "ui_button",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_sensordaten_abfragen",
+        "group": "6922440a28cc5089",
+        "order": 11,
+        "width": 8,
+        "height": 1,
+        "passthru": false,
+        "label": "Manuell abfragen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 210,
+        "y": 1140,
+        "wires": [
+            [
+                "ca925c55612e9296",
+                "9c138c75016d7fa9"
+            ]
+        ]
+    },
+    {
+        "id": "ca925c55612e9296",
+        "type": "mqtt out",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/LUFTFEUCHTIGKEIT/FEUCHTIGKEIT_ABFRAGE",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3366b3402bf277f",
+        "x": 660,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "9c138c75016d7fa9",
+        "type": "mqtt out",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/TEMPERATUR/TEMPERATUR_ABFRAGE",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3366b3402bf277f",
+        "x": 640,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "bb9c9422fe5ec921",
+        "type": "ui_chart",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_sensordaten_temperatur",
+        "group": "6922440a28cc5089",
+        "order": 16,
+        "width": 6,
+        "height": 6,
+        "label": "Sensordaten Temperatur",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "20",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b16fc0fbb3516a13",
+        "type": "ui_chart",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_sensordaten_luftfeuchte",
+        "group": "6922440a28cc5089",
+        "order": 2,
+        "width": 6,
+        "height": 6,
+        "label": "Sensordaten Luftfeuchtigkeit",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "20",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 750,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7cdae58863ddb12",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/FEUERALARM/WARNUNG",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 1280,
+        "wires": [
+            [
+                "ee3e5c74b0bcb8e3"
+            ]
+        ]
+    },
+    {
+        "id": "ee3e5c74b0bcb8e3",
+        "type": "function",
+        "z": "1acc33cf2157e254",
+        "name": "function 3",
+        "func": "if(msg.payload == \"0\"){\n    msg.background = \"green\";\n    msg.topic = \"fa-circle-o\";\n    msg.warnstufe = \"Alles OK\";\n} else if(msg.payload == \"1\"){\n    msg.background = \"orange\";\n    msg.topic = \"fa-bullseye\";\n    msg.warnstufe = \"Achtung\";\n} else if (msg.payload == \"2\") {\n    msg.background = \"red\";\n    msg.topic = \"fa-bell\";\n    msg.warnstufe = \"Warnung\";\n} else if (msg.payload == \"3\") {\n    msg.background = \"black\";\n    msg.topic = \"fa-warning\";\n    msg.warnstufe = \"FEUER!!!\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1280,
+        "wires": [
+            [
+                "10c994c2deaa645f"
+            ]
+        ]
+    },
+    {
+        "id": "10c994c2deaa645f",
+        "type": "ui_button",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_feueralarm_anzeige",
+        "group": "6922440a28cc5089",
+        "order": 13,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "{{msg.warnstufe}}",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "{{background}}",
+        "className": "",
+        "icon": "{{msg.topic}}",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 720,
+        "y": 1280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e67ec016b1ace20b",
+        "type": "inject",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 330,
+        "y": 1320,
+        "wires": [
+            [
+                "ee3e5c74b0bcb8e3"
+            ]
+        ]
+    },
+    {
+        "id": "40cd6c67a75dfddb",
+        "type": "inject",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "False",
+        "payloadType": "str",
+        "x": 350,
+        "y": 340,
+        "wires": [
+            [
+                "544dcd18fbd033c8"
+            ]
+        ]
+    },
+    {
+        "id": "b9c36fb23f8cb2ec",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/HELLIGKEIT/HELLIGKEIT_ABFRAGE",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "2e88b1c437e2b619"
+            ]
+        ]
+    },
+    {
+        "id": "ade4eb81c529d273",
+        "type": "mqtt out",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/TEMPERATUR/GRENZWERT_NEU",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3366b3402bf277f",
+        "x": 1320,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "91e263d9b420d1e5",
+        "type": "function",
+        "z": "1acc33cf2157e254",
+        "name": "function 4",
+        "func": "msg.payload = parseFloat(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 560,
+        "wires": [
+            [
+                "774e0c8affef097f"
+            ]
+        ]
+    },
+    {
+        "id": "774e0c8affef097f",
+        "type": "ui_slider",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_temperatur_grenzwert_neu",
+        "label": "Heizen ab",
+        "tooltip": "",
+        "group": "bc1c744dc90bbc75",
+        "order": 25,
+        "width": 8,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "30",
+        "step": "0.1",
+        "className": "",
+        "x": 900,
+        "y": 560,
+        "wires": [
+            [
+                "ade4eb81c529d273"
+            ]
+        ]
+    },
+    {
+        "id": "83c9fd22590e71f0",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/TEMPERATUR/GRENZWERT_ABFRAGE",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "91e263d9b420d1e5"
+            ]
+        ]
+    },
+    {
+        "id": "839f022f81e6b934",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "WOHNZIMMER/HEIZUNG/STATUS",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 620,
+        "wires": [
+            [
+                "fb73deea7c7d7d7f"
+            ]
+        ]
+    },
+    {
+        "id": "c5b610214510b346",
+        "type": "inject",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "False",
+        "payloadType": "str",
+        "x": 370,
+        "y": 660,
+        "wires": [
+            [
+                "fb73deea7c7d7d7f"
+            ]
+        ]
+    },
+    {
+        "id": "fb73deea7c7d7d7f",
+        "type": "function",
+        "z": "1acc33cf2157e254",
+        "name": "function 5",
+        "func": "if(msg.payload == \"True\"){\n    msg.topic = \"AN\";\n    msg.background = \"green\";\n}else{\n    msg.topic = \"AUS\";\n    msg.background = \"red\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 620,
+        "wires": [
+            [
+                "333b5be98cf32ab2"
+            ]
+        ]
+    },
+    {
+        "id": "333b5be98cf32ab2",
+        "type": "ui_button",
+        "z": "1acc33cf2157e254",
+        "name": "wohnzimmer_heizung_status",
+        "group": "bc1c744dc90bbc75",
+        "order": 27,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "{{topic}}",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "{{background}}",
+        "className": "",
+        "icon": "fa-thermometer-full",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 720,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c79e23334e79439f",
+        "type": "ui_text",
+        "z": "1acc33cf2157e254",
+        "d": true,
+        "group": "6922440a28cc5089",
+        "order": 14,
+        "width": 1,
+        "height": 1,
+        "name": "kueche_feueralarm_warnstufe",
+        "label": "Warnstufe",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 210,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "9a98a9f436c9db58",
+        "type": "mqtt in",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/LUEFTUNG/LUEFTUNG_STATUS",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e3366b3402bf277f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 1440,
+        "wires": [
+            [
+                "69a036bb63128a01"
+            ]
+        ]
+    },
+    {
+        "id": "1256378e3cb20fc1",
+        "type": "inject",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 370,
+        "y": 1480,
+        "wires": [
+            [
+                "69a036bb63128a01"
+            ]
+        ]
+    },
+    {
+        "id": "ee12d537301aca13",
+        "type": "ui_text",
+        "z": "1acc33cf2157e254",
+        "group": "6922440a28cc5089",
+        "order": 25,
+        "width": 4,
+        "height": 1,
+        "name": "kueche_lueftung_status_text",
+        "label": "Status Lüftung",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 200,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "69a036bb63128a01",
+        "type": "function",
+        "z": "1acc33cf2157e254",
+        "name": "function 7",
+        "func": "if(msg.payload == \"True\"){\n    msg.topic = \"AN\";\n    msg.background = \"green\";\n}else{\n    msg.topic = \"AUS\";\n    msg.background = \"red\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1440,
+        "wires": [
+            [
+                "8d3b11d5530f502a"
+            ]
+        ]
+    },
+    {
+        "id": "be6ec414bd3a97ce",
+        "type": "mqtt out",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/LUEFTUNG/STATUS_ABFRAGE",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3366b3402bf277f",
+        "x": 1050,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "8d3b11d5530f502a",
+        "type": "ui_button",
+        "z": "1acc33cf2157e254",
+        "name": "kueche_lueftung_anzeige",
+        "group": "6922440a28cc5089",
+        "order": 26,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "{{msg.topic}}",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "{{background}}",
+        "className": "",
+        "icon": "fa-refresh",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 710,
+        "y": 1440,
+        "wires": [
+            [
+                "be6ec414bd3a97ce"
+            ]
+        ]
+    },
+    {
+        "id": "580d81c4c432056b",
+        "type": "mqtt out",
+        "z": "1acc33cf2157e254",
+        "name": "",
+        "topic": "KUECHE/LUEFTUNG/SCHALTEN",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3366b3402bf277f",
+        "x": 360,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "4cb48afcb360d2e8",
+        "type": "inject",
+        "z": "1acc33cf2157e254",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 130,
+        "y": 1600,
+        "wires": [
+            [
+                "580d81c4c432056b"
+            ]
+        ]
+    },
+    {
+        "id": "e6ac304902c1491d",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3a4561d076d09b8a",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e3f28aa004531fb5",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "facc4c3151924144",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "321c710ce15fec5b",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6030663b40cf02bd",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "06c0b787aea6d920",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 9,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "d83e78b8fa19ee75",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c1ba55f0b407b2cc",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e68aae8e574adc32",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c9186303f9a46e4a",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 17,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f32f4814e130018c",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 18,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "71210442995ccfd0",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 19,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "10c5a577a3b2c32a",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 20,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6117237d2ec4c90a",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 21,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "c3012081c00e19e4",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 22,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "92b92531fd1fa199",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 23,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "4c547131e88b768c",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 24,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f47dc27b1e462173",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 26,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f45281981f5ec4ac",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 28,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "22993afc0bcec359",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "bc1c744dc90bbc75",
+        "order": 29,
+        "width": 16,
+        "height": 1
+    },
+    {
+        "id": "2bef122771ea0aea",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0d204cff29e08977",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ba3779b0105aaf3b",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a1cffe13c8c2e000",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e02920c5229f79d2",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f59212aa4759e7df",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "4a817d30a83fd50b",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 9,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "c12af8c99af40ec9",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 10,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ce298f90c052f23f",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "105cbe838636345c",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 17,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "80df76229e642c97",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 18,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "370c703389bf0132",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 19,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0fdc8797896faa9b",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 20,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "efb644a90d1f95ea",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 21,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ac4f3ba67ad5f33c",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 22,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e73d5fef10c0b9f0",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 23,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "50b60f2b05bc6016",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 24,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "f1d4fb7fac293ebd",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 27,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "63b961dbbd795743",
+        "type": "ui_spacer",
+        "z": "1acc33cf2157e254",
+        "name": "spacer",
+        "group": "6922440a28cc5089",
+        "order": 28,
+        "width": 16,
+        "height": 1
+    },
+    {
+        "id": "e3366b3402bf277f",
+        "type": "mqtt-broker",
+        "name": "mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "bc1c744dc90bbc75",
+        "type": "ui_group",
+        "name": "Wohnzimmer",
+        "tab": "e8ed66cde38e3a7d",
+        "order": 1,
+        "disp": true,
+        "width": 17,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6922440a28cc5089",
+        "type": "ui_group",
+        "name": "Küche",
+        "tab": "e8ed66cde38e3a7d",
+        "order": 2,
+        "disp": true,
+        "width": 17,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e8ed66cde38e3a7d",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

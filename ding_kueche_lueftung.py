@@ -72,5 +72,6 @@ zuletzt_published_zeit=utime.ticks_ms()
 while True:
     #Überprüfen ob neue Inhalte auf den subcribed Topics geschickt wurden
     client.check_msg()
+    print("Neue Abfrage")
 
     utime.sleep(.1)
