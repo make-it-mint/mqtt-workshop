@@ -56,6 +56,7 @@ Im Browser kann jetzt sowohl das Interface zum Erstellen von Workflows, als auch
 localhost:1880      <- für Flows
 localhost:1880      <- für Das Dashboard
 
+
 #### Server von Netzwerkgeräten erreichen
 Um diese Seiten von einem anderen Gerät im Netzerk zu erreichen muss die IP-Adresse des Servers ermittelt und für "localhost" ersetzt werden.
 
@@ -69,6 +70,19 @@ Hierfür den folgenden Befehl im Terminal eingeben:
 `sudo systemctl enable nodered.service`
 Soll der Service deaktiviert werden, folgenden Befehl eingeben:
 `sudo systemctl disable nodered.service`
+
+
+#### Workshop-Flows importieren
+Das Dashboard ist aktuell leer. Um das Workshop Dashboard zu verwenden, muss es importiert werden.
+Hierfür im Browser die folgende url öffnen, falls das noch nicht getan wurde:
+`localhost:1880` (oder die entsprechende IP anstatt localhost, wenn man an dieser Stelle einen anderen Computer verwendet)
+Hier können Flow angelegt erstellt werden.
+Oben links in dem Fenster befindet sich ein Symbol aus drei horizontalen Strichen. beim Anklicken öffnet sich ein Menü. Hier muss das Feld **Import** ausgewählt werden.
+Beim jetzt geöffneten Fenster den Button **Datei für Import auswählen** anklicken und die Workshopflows auswählen.
+Die Workshopflows sind in diesem Repository im Ordner **node_red** als Datei **flows.json** enthalten.
+Hat alles funktioniert, oben Links auf den großen roten **Übernahme(deploy)** Button klicken.
+Unter `localhost:1880/ui` ist jetzt das Workshop-Dashboard sichtbar.
+
 
 <br>
 
