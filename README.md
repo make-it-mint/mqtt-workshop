@@ -40,6 +40,40 @@ Es sollte ein grünes "(is running)" und weiterer Text angezeigt werden.
 
 UUUUnd der Broker ist einsatzbereit. TOP!
 
+## Installation von Node-Red auf dem Server (4B)
+
+Node-Red wird in diesem Workshop verwendet, um ein Dashboard der "Dinge" über das Netzwerk bereitzustellen. Es wird auf dem gleichen Gerät installiert, wie der MQTT Broker.
+Node-Red stellt einen Installationswizard zur Verfügung, der [hier](https://nodered.org/docs/getting-started/raspberrypi) gefunden werden kann.
+
+Einfach ein Terminal öffnen und die folgende Zeile ausführen:
+`bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)`
+Die installation wird ein paar Minuten in Anspruch nehmen.
+Sobald sie abgeschlossen ist, muss noch Dashboard Erweiterung installiert werden. Im Terminal folgenden Befehl ausführen:
+`npm install node-red-dashboard`
+
+Im Browser kann jetzt sowohl das Interface zum Erstellen von Workflows, als auch das Dashboard geöffnet werden. Node-Red verwendet standardmäßig Port 1880.
+Öffne einen Browser und gib die folgende url ein:
+localhost:1880      <- für Flows
+localhost:1880      <- für Das Dashboard
+
+#### Server von Netzwerkgeräten erreichen
+Um diese Seiten von einem anderen Gerät im Netzerk zu erreichen muss die IP-Adresse des Servers ermittelt und für "localhost" ersetzt werden.
+
+Die IP-Adresse des Servers kann durch Eingabe des folgenden Befehls in das Terminal ermittelt werden:
+`ifconfig -a`
+In der Ausgabe sollte eine Adresse der Form "192.168.0.110" als IPv4 Adresse erscheinen. Diese Adresse kann für den "localhost" eingesetzt werden.
+
+#### Node-Red als Service einrichten
+Damit Node-Red beim Starten des Raspberry Pi ebenfalls immer gestartet wird, muss es als Service eingerichtet werden.
+Hierfür den folgenden Befehl im Terminal eingeben:
+`sudo systemctl enable nodered.service`
+Soll der Service deaktiviert werden, folgenden Befehl eingeben:
+`sudo systemctl disable nodered.service`
+
+<br>
+
+> **_ANMERKUNG:_** Wird Thonny für diesen Workshop verwendet, kann die restliche Anleitung ignoriert werden. Sie befindet sich in den Workshopunterlagen.
+
 ## Mikrocontroller vorbereiten
 Dieses Repo beinhaltet die Micropython Firmware für den Raspberry Pi Pico W. [Hier](https://micropython.org/download/rp2-pico-w/) kann überprüft werden, ob eine aktueller Version existiert.
 
