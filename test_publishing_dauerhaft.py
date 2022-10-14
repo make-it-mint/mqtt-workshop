@@ -2,7 +2,7 @@ import machine, sys
 import network
 import utime
 from umqtt.simple import MQTTClient
-from netzwerk_und_client_einstellungen import *
+from einstellungen import *
 
 #TOPICS
 TOPIC_PUBLISHING = 'MEINE_TOPIC/TESTS/DAUER_PUBLISH'

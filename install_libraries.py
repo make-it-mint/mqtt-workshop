@@ -1,7 +1,7 @@
 import network
 import time
 import upip
-from netzwerk_und_client_einstellungen import *
+from einstellungen import *
 
 
 wlan = network.WLAN(network.STA_IF)

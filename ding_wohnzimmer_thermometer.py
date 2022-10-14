@@ -2,7 +2,7 @@ import machine,sys, math
 import network
 import utime
 from umqtt.simple import MQTTClient
-from netzwerk_und_client_einstellungen import *
+from einstellungen import *
 
 #TOPICS
 TOPIC_PUBLISHING_MESSUNG = 'WOHNZIMMER/TEMPERATUR/MESSUNG'

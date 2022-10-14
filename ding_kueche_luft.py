@@ -3,7 +3,7 @@ import network
 import utime
 from dht import DHT22
 from umqtt.simple import MQTTClient
-from netzwerk_und_client_einstellungen import *
+from einstellungen import *
 
 
 #TOPICS
