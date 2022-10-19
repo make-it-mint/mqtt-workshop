@@ -36,7 +36,7 @@
         "name": "wohnzimmer_sensordaten_helligkeit",
         "group": "bc1c744dc90bbc75",
         "order": 2,
-        "width": 6,
+        "width": 5,
         "height": 6,
         "label": "Sensordaten Helligkeit",
         "chartType": "line",
@@ -127,7 +127,7 @@
         "z": "1acc33cf2157e254",
         "name": "wohnzimmer_helligkeit_led_status",
         "group": "bc1c744dc90bbc75",
-        "order": 13,
+        "order": 12,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -172,7 +172,7 @@
         "z": "1acc33cf2157e254",
         "group": "bc1c744dc90bbc75",
         "name": "template_wohnzimmer_led_abfrage",
-        "order": 30,
+        "order": 28,
         "width": 1,
         "height": 1,
         "format": "<style>\n[node-id=\"1523a981479f3b3c\"] > button{\n    font-size: 1.7em !important;\n    border-radius:20px !important;\n    };\n</style>\n\n<style>\n    [node-id=\"333b5be98cf32ab2\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>\n",
@@ -230,7 +230,7 @@
         "z": "1acc33cf2157e254",
         "group": "6922440a28cc5089",
         "name": "template_kueche_manuelle_abfrage",
-        "order": 29,
+        "order": 28,
         "width": 1,
         "height": 1,
         "format": "<style>\n    [node-id=\"f88da9db8a11a9da\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>\n\n<style>\n    [node-id=\"10c994c2deaa645f\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>\n\n<style>\n    [node-id=\"8d3b11d5530f502a\"]>button {\n        font-size: 1.7em !important;\n        border-radius: 20px !important;\n    }\n\n    ;\n</style>",
@@ -273,7 +273,7 @@
         "z": "1acc33cf2157e254",
         "name": "wohnzimmer_temperatur_skala",
         "group": "bc1c744dc90bbc75",
-        "order": 15,
+        "order": 14,
         "width": 10,
         "height": 7,
         "gtype": "gage",
@@ -300,8 +300,8 @@
         "z": "1acc33cf2157e254",
         "name": "wohnzimmer_sensordaten_temperatur",
         "group": "bc1c744dc90bbc75",
-        "order": 16,
-        "width": 6,
+        "order": 15,
+        "width": 5,
         "height": 6,
         "label": "Sensordaten Temperatur",
         "chartType": "line",
@@ -442,7 +442,7 @@
         "z": "1acc33cf2157e254",
         "name": "kueche_temperatur_skala",
         "group": "6922440a28cc5089",
-        "order": 15,
+        "order": 14,
         "width": 10,
         "height": 7,
         "gtype": "gage",
@@ -534,8 +534,8 @@
         "z": "1acc33cf2157e254",
         "name": "kueche_sensordaten_temperatur",
         "group": "6922440a28cc5089",
-        "order": 16,
-        "width": 6,
+        "order": 15,
+        "width": 5,
         "height": 6,
         "label": "Sensordaten Temperatur",
         "chartType": "line",
@@ -579,7 +579,7 @@
         "name": "kueche_sensordaten_luftfeuchte",
         "group": "6922440a28cc5089",
         "order": 2,
-        "width": 6,
+        "width": 5,
         "height": 6,
         "label": "Sensordaten Luftfeuchtigkeit",
         "chartType": "line",
@@ -662,7 +662,7 @@
         "z": "1acc33cf2157e254",
         "name": "kueche_feueralarm_anzeige",
         "group": "6922440a28cc5089",
-        "order": 13,
+        "order": 12,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -806,7 +806,7 @@
         "label": "Heizen ab",
         "tooltip": "",
         "group": "bc1c744dc90bbc75",
-        "order": 25,
+        "order": 24,
         "width": 8,
         "height": 1,
         "passthru": true,
@@ -921,7 +921,7 @@
         "z": "1acc33cf2157e254",
         "name": "wohnzimmer_heizung_status",
         "group": "bc1c744dc90bbc75",
-        "order": 27,
+        "order": 25,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -947,7 +947,7 @@
         "z": "1acc33cf2157e254",
         "d": true,
         "group": "6922440a28cc5089",
-        "order": 14,
+        "order": 13,
         "width": 1,
         "height": 1,
         "name": "kueche_feueralarm_warnstufe",
@@ -1014,7 +1014,7 @@
         "type": "ui_text",
         "z": "1acc33cf2157e254",
         "group": "6922440a28cc5089",
-        "order": 25,
+        "order": 24,
         "width": 4,
         "height": 1,
         "name": "kueche_lueftung_status_text",
@@ -1069,7 +1069,7 @@
         "z": "1acc33cf2157e254",
         "name": "kueche_lueftung_anzeige",
         "group": "6922440a28cc5089",
-        "order": 26,
+        "order": 25,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -1140,7 +1140,7 @@
         ]
     },
     {
-        "id": "e6ac304902c1491d",
+        "id": "610dc2532be86481",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1150,7 +1150,7 @@
         "height": 1
     },
     {
-        "id": "3a4561d076d09b8a",
+        "id": "e7fda9977c658442",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1160,7 +1160,7 @@
         "height": 1
     },
     {
-        "id": "e3f28aa004531fb5",
+        "id": "ea03a98e41ea8984",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1170,7 +1170,7 @@
         "height": 1
     },
     {
-        "id": "facc4c3151924144",
+        "id": "fe563df18be6fadb",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1180,7 +1180,7 @@
         "height": 1
     },
     {
-        "id": "321c710ce15fec5b",
+        "id": "f171a144e2690e35",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1190,7 +1190,7 @@
         "height": 1
     },
     {
-        "id": "6030663b40cf02bd",
+        "id": "a26fd47c312da23d",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1200,17 +1200,17 @@
         "height": 1
     },
     {
-        "id": "06c0b787aea6d920",
+        "id": "491de61cb79325bc",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "bc1c744dc90bbc75",
         "order": 9,
-        "width": 7,
+        "width": 6,
         "height": 1
     },
     {
-        "id": "d83e78b8fa19ee75",
+        "id": "64546c6d67d0f7be",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1220,27 +1220,27 @@
         "height": 1
     },
     {
-        "id": "c1ba55f0b407b2cc",
+        "id": "1679379aa68c46ed",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "bc1c744dc90bbc75",
-        "order": 12,
+        "order": 13,
         "width": 1,
         "height": 1
     },
     {
-        "id": "e68aae8e574adc32",
+        "id": "4da8197a3308d7ec",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "bc1c744dc90bbc75",
-        "order": 14,
+        "order": 16,
         "width": 1,
         "height": 1
     },
     {
-        "id": "c9186303f9a46e4a",
+        "id": "4938c1e0ac714724",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1250,7 +1250,7 @@
         "height": 1
     },
     {
-        "id": "f32f4814e130018c",
+        "id": "59b07d07ad51eb53",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1260,7 +1260,7 @@
         "height": 1
     },
     {
-        "id": "71210442995ccfd0",
+        "id": "53783497f479449e",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1270,7 +1270,7 @@
         "height": 1
     },
     {
-        "id": "10c5a577a3b2c32a",
+        "id": "7dabfc782d818a61",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1280,7 +1280,7 @@
         "height": 1
     },
     {
-        "id": "6117237d2ec4c90a",
+        "id": "6d63092722d865bf",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1290,37 +1290,27 @@
         "height": 1
     },
     {
-        "id": "c3012081c00e19e4",
+        "id": "d7e307712dcc4c72",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "bc1c744dc90bbc75",
         "order": 22,
-        "width": 1,
+        "width": 6,
         "height": 1
     },
     {
-        "id": "92b92531fd1fa199",
+        "id": "27edd4c36f504d5c",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "bc1c744dc90bbc75",
         "order": 23,
-        "width": 7,
-        "height": 1
-    },
-    {
-        "id": "4c547131e88b768c",
-        "type": "ui_spacer",
-        "z": "1acc33cf2157e254",
-        "name": "spacer",
-        "group": "bc1c744dc90bbc75",
-        "order": 24,
         "width": 1,
         "height": 1
     },
     {
-        "id": "f47dc27b1e462173",
+        "id": "b79acf8800a6ecc4",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1330,27 +1320,17 @@
         "height": 1
     },
     {
-        "id": "f45281981f5ec4ac",
+        "id": "be8efbb748979729",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "bc1c744dc90bbc75",
-        "order": 28,
-        "width": 1,
+        "order": 27,
+        "width": 15,
         "height": 1
     },
     {
-        "id": "22993afc0bcec359",
-        "type": "ui_spacer",
-        "z": "1acc33cf2157e254",
-        "name": "spacer",
-        "group": "bc1c744dc90bbc75",
-        "order": 29,
-        "width": 16,
-        "height": 1
-    },
-    {
-        "id": "2bef122771ea0aea",
+        "id": "baa455a5c6a3a957",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1360,7 +1340,7 @@
         "height": 1
     },
     {
-        "id": "0d204cff29e08977",
+        "id": "fc644d0ee1dff4a9",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1370,7 +1350,7 @@
         "height": 1
     },
     {
-        "id": "ba3779b0105aaf3b",
+        "id": "37dc608d7ea579fc",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1380,7 +1360,7 @@
         "height": 1
     },
     {
-        "id": "a1cffe13c8c2e000",
+        "id": "1ca87e9cabd9ae61",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1390,7 +1370,7 @@
         "height": 1
     },
     {
-        "id": "e02920c5229f79d2",
+        "id": "c26d9bb159936d2a",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1400,7 +1380,7 @@
         "height": 1
     },
     {
-        "id": "f59212aa4759e7df",
+        "id": "1cca20de2bf2f111",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1410,17 +1390,17 @@
         "height": 1
     },
     {
-        "id": "4a817d30a83fd50b",
+        "id": "d5650dca5486972e",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "6922440a28cc5089",
         "order": 9,
-        "width": 7,
+        "width": 6,
         "height": 1
     },
     {
-        "id": "c12af8c99af40ec9",
+        "id": "652a662df89ae234",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1430,17 +1410,17 @@
         "height": 1
     },
     {
-        "id": "ce298f90c052f23f",
+        "id": "8947801e3fd9574d",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "6922440a28cc5089",
-        "order": 12,
+        "order": 16,
         "width": 1,
         "height": 1
     },
     {
-        "id": "105cbe838636345c",
+        "id": "b97a072608cc41b2",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1450,7 +1430,7 @@
         "height": 1
     },
     {
-        "id": "80df76229e642c97",
+        "id": "e10dc8a3823b9bcc",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1460,7 +1440,7 @@
         "height": 1
     },
     {
-        "id": "370c703389bf0132",
+        "id": "77527631f951d0fd",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1470,7 +1450,7 @@
         "height": 1
     },
     {
-        "id": "0fdc8797896faa9b",
+        "id": "0be6324587100e66",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1480,7 +1460,7 @@
         "height": 1
     },
     {
-        "id": "efb644a90d1f95ea",
+        "id": "ee381d5204d279c3",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
@@ -1490,53 +1470,43 @@
         "height": 1
     },
     {
-        "id": "ac4f3ba67ad5f33c",
+        "id": "de32e69790f1e36d",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "6922440a28cc5089",
         "order": 22,
-        "width": 1,
+        "width": 6,
         "height": 1
     },
     {
-        "id": "e73d5fef10c0b9f0",
+        "id": "b733fd7d7b35b3d5",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "6922440a28cc5089",
         "order": 23,
-        "width": 7,
+        "width": 5,
         "height": 1
     },
     {
-        "id": "50b60f2b05bc6016",
+        "id": "84d187ab0182847d",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "6922440a28cc5089",
-        "order": 24,
-        "width": 6,
+        "order": 26,
+        "width": 1,
         "height": 1
     },
     {
-        "id": "f1d4fb7fac293ebd",
+        "id": "3cd7644c206fcc29",
         "type": "ui_spacer",
         "z": "1acc33cf2157e254",
         "name": "spacer",
         "group": "6922440a28cc5089",
         "order": 27,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "63b961dbbd795743",
-        "type": "ui_spacer",
-        "z": "1acc33cf2157e254",
-        "name": "spacer",
-        "group": "6922440a28cc5089",
-        "order": 28,
-        "width": 16,
+        "width": 15,
         "height": 1
     },
     {
@@ -1573,7 +1543,7 @@
         "tab": "e8ed66cde38e3a7d",
         "order": 1,
         "disp": true,
-        "width": 17,
+        "width": 16,
         "collapse": false,
         "className": ""
     },
@@ -1584,7 +1554,7 @@
         "tab": "e8ed66cde38e3a7d",
         "order": 2,
         "disp": true,
-        "width": 17,
+        "width": 16,
         "collapse": false,
         "className": ""
     },
