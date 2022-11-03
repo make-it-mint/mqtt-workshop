@@ -115,12 +115,12 @@ Sollte auf deinem Gerät noch kein Python installiert sein, kannst du [hier](htt
 Für diesen Workshop wird die `ampy` Bibliothek von adafruit oder die IDE Thonny (wenn man direkt ein Raspberry Pi für die Programmierung des Pico benutzt) verwendet. Mit beiden Tools kann Code auf dem Mikrocontroller ausgeführt werden.
 Die Anleitung für Thonny gibt es in den Workshopunterlagen.
 
-Für `ampy` müssen zuerst die entsprechenden Python Pakcages installiert werden. Gib in der Konsole die folgenden Befehle ein.
+Für `ampy` müssen zuerst die entsprechenden Python Packages installiert werden. Gib in der Konsole die folgenden Befehle ein.
 `pip install adafruit-ampy`
 `pip install esptool`
 
 Nur noch zwei Aktionen, dann ist alles bereit.
-Öffne die Datei `netzwerk_und_client_einstellungen.py` und Pflege hier die notwendigen Informationen zum Namen deines Mikrocontrollers, der im Netzwerk einzigartig sein sollte, der SSID, dem WLAN Passwort und der IP des Geräts, auf dem der Broker installiert ist.
+Öffne die Datei `einstellungen.py` und Pflege hier die notwendigen Informationen zum Namen deines Mikrocontrollers, der im Netzwerk einzigartig sein sollte, der SSID, dem WLAN Passwort und der IP des Geräts, auf dem der Broker installiert ist.
 Die BROKER_IP findest du heraus, indem du auf dem Raspberry Pi mit dem Broker eine Console öffnest und dort den folgenden Befehl eingibst:
 `ifconfig -a`
 Jetzt sollte viel Text erscheinen und irgendwo dabei die IP Adresse des Geräts stehen. Normalerweise hat sie diese oder eine ähnliche folgende Form
@@ -128,8 +128,8 @@ Jetzt sollte viel Text erscheinen und irgendwo dabei die IP Adresse des Geräts 
 Trage diesen Wert dann als BROKER_IP ein.
 
 Jetzt kann die `setup_microcontroller.py` Datei des Repositories ausführen. Dabei weren erst die Netzwerk und Client Informationen auf den Pico geschrieben und danach die notwendigen Pakete heruntergeladen.
-`pthon setup_microcontroller.py`
-Treten hierbei Fehler auf, überprüfe bitte,ob der `PORTNAME` in `setup_microcontroller-py` richtig ist und ob sowohl die SSID und das Passwort stimmen. Das sind die häufigsten Fehler.
+`python setup_microcontroller.py`
+Treten hierbei Fehler auf, überprüfe bitte,ob der `PORTNAME` in `setup_microcontroller.py` richtig ist und ob sowohl die SSID und das Passwort stimmen. Das sind die häufigsten Fehler.
 
 Hat alles funktioniert, ist der Pico bereit für sein Leben im IoT Netzwerk :)
 
